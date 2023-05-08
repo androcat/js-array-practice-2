@@ -60,15 +60,18 @@
   // ---------------------
 
   // Put your answer below -------------------------
+  // wat (https://stackoverflow.com/questions/10021847/for-loop-in-multidimensional-javascript-array)
+  // Why do I keep getting this error: "1506:9 Uncaught TypeError: Cannot set properties of undefined (setting '0')
+  //  at nestedArrToObj (<anonymous>:9:31)
+  //  at <anonymous>:14:5n" for line 74
   function nestedArrToObj(arr) {
     let obj = {};
     for (let i = 0; i < arr.length; i++) {
-      // This gives us the nested array
-      const currentNestedArr = arr[i];
+      const currentNestedArrKey = arr[i][0];
       //   for (let j = 0; j < currentNestedArr.length; j++) {
       //     obj.currentNestedArr[j] =
       //   }
-      obj.currentNestedArr[0] = currentNestedArr[1];
+      obj[currentNestedArrKey] = arr[i][1];
     }
     return obj;
   }
@@ -87,6 +90,8 @@
   // ---------------------
 
   // Put your answer below -------------------------
+  // use reduce ?????
+  function removeDups(arr) {}
 
   // -----------------------------------------------
 
