@@ -60,7 +60,25 @@
   // ---------------------
 
   // Put your answer below -------------------------
-
+  function nestedArrToObj(arr) {
+    let obj = {};
+    for (let i = 0; i < arr.length; i++) {
+      // This gives us the nested array
+      const currentNestedArr = arr[i];
+      //   for (let j = 0; j < currentNestedArr.length; j++) {
+      //     obj.currentNestedArr[j] =
+      //   }
+      obj.currentNestedArr[0] = currentNestedArr[1];
+    }
+    return obj;
+  }
+  console.log(
+    nestedArrToObj([
+      ["name", "Charlie"],
+      ["color", "brown"],
+      ["age", 10],
+    ])
+  );
   // -----------------------------------------------
 
   // ---------------------
