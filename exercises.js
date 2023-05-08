@@ -22,6 +22,12 @@ console.log(wordArray("sunshine", 3));
 
 // Put your answer below -------------------------
 
+function reverseArr(arr) {
+  return [...arr].reverse();
+}
+arr1 = [1, 2, 3];
+console.log("Should be different:", arr1, reverseArr(arr1));
+
 // -----------------------------------------------
 
 // ---------------------
