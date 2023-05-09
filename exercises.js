@@ -13,7 +13,12 @@
     for (let j = 0; j < i; j++) {
       arr.push(str);
     }
+
     return arr;
+
+    // OR
+    // use Array.prototype.fill(value you want to fill, start, end - up to but not including it)
+    // return Array(i).fill(str);
   }
   console.log(wordArray("sunshine", 3));
   // -----------------------------------------------
@@ -27,6 +32,12 @@
 
   function reverseArr(arr) {
     return [...arr].reverse();
+
+    // OR
+    // const result = [];
+    // for (let i = 0; i <  arr.length; i++){
+    // result.unshift(arr[i]); //keep adding to the front
+    // }
   }
   let arr1 = [1, 2, 3];
   console.log("Should be different:", arr1, reverseArr(arr1));
@@ -41,6 +52,7 @@
   let arr2 = [1, 0, true, false, "yes", "", "", null, "hi", undefined];
   console.log(arr2);
   // NOTE: there is an error in my logic that causes the last of consecutive falsies to not be removed
+  // ERROR EXPLAINED: bc it moves the index for that last falsy in a row, so we end up skipping it. See solutions below vvv
   function removeFalsies(arr) {
     for (let i = 0; i < arr.length; i++) {
       if (!arr[i]) {
@@ -48,6 +60,17 @@
       }
     }
     return arr;
+    // Working logic:
+    // const result = [];
+    // for (let i = 0; i < arr.length; i++){
+    //     if (arr[i]) { // if value is a truthy, then push it into our result array
+    //         result.push(arr[i]);
+    //     }
+    // }
+    // return result;
+
+    // OR
+    // return arr.filter((el) => el);
   }
   console.log(removeFalsies(arr2));
   console.log(!null);
@@ -68,9 +91,19 @@
     let obj = {};
     for (let i = 0; i < arr.length; i++) {
       const currentNestedArrKey = arr[i][0];
-      obj[currentNestedArrKey] = arr[i][1];
+      obj[currentNestedArrKey] = arr[i][1]; // When key is computed, NEED [] notation
+      // Or in one line:
+      // obj[arr[i][0]] = arr[i][1];
     }
+    // OR with for ...  of
+    //for (const nestedArr in arr) {
+    //     obj[nestedArr[0]] = nestedArr[1];
+    // }
     return obj;
+
+    // OR
+    // use fromEntries:
+    // - to delete from obj: delete (which is a keyword) obj.keyName;
   }
   console.log(
     nestedArrToObj([
@@ -89,7 +122,13 @@
   // Put your answer below -------------------------
   // use reduce ?????
   function removeDups(arr) {
-    return [...new Set(arr)];
+    return [...new Set(arr)]; // bc set has uniquely distinct values only
+
+    // OR
+    // return arr.filter((item, index) => arr.indexOf(item) === index);
+    // AKA it grabs the first index of the word then checks it against the index of given item in the actual array,
+    // if they match (!ex mango's first index is 1 vs the 2nd mango that has an index of 4 in the array)
+    // then it passes thru the filter :^)
   }
 
   // -----------------------------------------------
@@ -104,6 +143,24 @@
 
   // Put your answer below -------------------------
 
+  function compareArrays(arr1, arr2) {
+    // if they dont even have the same length, don't bother
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+    //put them in same order so that we can compare number by number
+    arr1.sort();
+    arr2.sort();
+
+    // got thru and compare side by side
+    for (let i = 0; i < arr.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false; // if at any point they don't match, then 'quit' to stop running and return false
+      }
+    }
+    return true; //otherwise it makes it here bc passes all the tests
+  }
+
   // -----------------------------------------------
 
   //////////////////////////////////////////////////
@@ -117,7 +174,8 @@
   //////////////////////////////////////////////////
 
   // ---------------------
-  // Define a function that takes an array and returns a new array with all sub-array elements concatenated into it
+  // Define a function that takes an array and returns a new array with all sub-array
+  // elements concatenated into it
   // [0, 1, 2, [3, 4]] should return [0, 1, 2, 3, 4]
   // [0, 1, 2, [[[3, 4]]]] should return [0, 1, 2, 3, 4]
   // DO NOT USE Array.prototype.flat()
