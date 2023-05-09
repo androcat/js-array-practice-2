@@ -68,9 +68,6 @@
     let obj = {};
     for (let i = 0; i < arr.length; i++) {
       const currentNestedArrKey = arr[i][0];
-      //   for (let j = 0; j < currentNestedArr.length; j++) {
-      //     obj.currentNestedArr[j] =
-      //   }
       obj[currentNestedArrKey] = arr[i][1];
     }
     return obj;
@@ -91,7 +88,9 @@
 
   // Put your answer below -------------------------
   // use reduce ?????
-  function removeDups(arr) {}
+  function removeDups(arr) {
+    return [...new Set(arr)];
+  }
 
   // -----------------------------------------------
 
