@@ -24,19 +24,30 @@ const arr = (N) => {
 // # 3
 // Drone Fly-By
 // https://www.codewars.com/kata/58356a94f8358058f30004b5/train/javascript
+// huh ? Need help
 function flyBy(lamps, drone) {
-  let arr = [...lamps];
-  let newArr = [];
-  for (let i = 0; i < drone.length; i++) {
-    newArr.push("o");
+  if (lamps.length === 2) {
+    return "o";
+  } else {
+    let arr = [...lamps];
+    let newArr = [];
+    for (let i = 0; i < drone.length; i++) {
+      newArr.push("o");
+    }
+    newArr[drone.length] = lamps.slice(drone.length);
+    return newArr.join("");
   }
-  newArr[drone.length] = lamps.slice(drone.length);
-  return newArr.join("");
 }
 
 // # 4
 // Get the mean of an array
 // https://www.codewars.com/kata/563e320cee5dddcf77000158/train/javascript
+function getAverage(marks) {
+  //TODO : calculate the downward rounded average of the marks array
+  let total = 0;
+  marks.forEach((n) => (total += n));
+  return Math.floor(total / marks.length);
+}
 
 // #5
 // THE SOUL OF WIT: REVERSE AN ARRAY
